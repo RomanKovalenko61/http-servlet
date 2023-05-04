@@ -31,7 +31,12 @@ public class FirstServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        var parameterMap = req.getParameterMap();
-        System.out.println(parameterMap);
+        try (var reader = req.getReader();
+             var lines = reader.lines()) {
+            lines.forEach(System.out::println);
+        }
+
+//        var parameterMap = req.getParameterMap();
+//        System.out.println(parameterMap);
     }
 }
