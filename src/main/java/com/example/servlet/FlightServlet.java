@@ -20,7 +20,8 @@ public class FlightServlet extends HttpServlet {
         resp.setContentType("text/html");
         resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
 
-        try (var printWriter = resp.getWriter()) {
+//        without try-with-resources that see difference between forward and include in dispatcher servlet
+        var printWriter = resp.getWriter();
             printWriter.write("<h1>Список перелетов</h1>");
             printWriter.write("<ul>");
             flightService.findAll().forEach(flightDTO -> {
@@ -31,6 +32,5 @@ public class FlightServlet extends HttpServlet {
                         """.formatted(flightDTO.getId(), flightDTO.getDescription()));
             });
             printWriter.write("</ul>");
-        }
     }
 }
