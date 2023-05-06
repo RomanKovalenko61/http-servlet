@@ -56,3 +56,13 @@ CREATE TABLE ticket
 
 CREATE UNIQUE INDEX unique_flight_id_seat_no_idx ON ticket (flight_id, seat_no);
 -- flight_id + seat_no
+
+CREATE TABLE users (
+                       id SERIAL PRIMARY KEY ,
+                       name VARCHAR(124) NOT NULL ,
+                       birthday DATE NOT NULL ,
+                       email VARCHAR(124) NOT NULL UNIQUE ,
+                       password VARCHAR(32) NOT NULL ,
+                       role VARCHAR(32) NOT NULL ,
+                       gender VARCHAR(16) NOT NULL
+);
