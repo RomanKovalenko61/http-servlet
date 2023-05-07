@@ -8,6 +8,7 @@ import lombok.SneakyThrows;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Optional;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
@@ -30,5 +31,14 @@ public class ImageService {
 
     public static ImageService getINSTANCE() {
         return INSTANCE;
+    }
+
+    @SneakyThrows
+    public Optional<InputStream> get(String imagePath) {
+        var imageFullPath = Path.of(basePath, imagePath);
+
+        return Files.exists(imageFullPath)
+                ? Optional.of(Files.newInputStream(imageFullPath))
+                : Optional.empty();
     }
 }
