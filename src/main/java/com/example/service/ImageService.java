@@ -29,7 +29,7 @@ public class ImageService {
         }
     }
 
-    public static ImageService getINSTANCE() {
+    public static ImageService getInstance() {
         return INSTANCE;
     }
 

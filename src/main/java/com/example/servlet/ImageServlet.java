@@ -14,7 +14,7 @@ import java.io.InputStream;
 @WebServlet("/images/*")
 public class ImageServlet extends HttpServlet {
 
-    private final ImageService imageService = ImageService.getINSTANCE();
+    private final ImageService imageService = ImageService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

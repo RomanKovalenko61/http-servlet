@@ -23,7 +23,6 @@ public class ACharsetFilter implements Filter {
         request.setCharacterEncoding(UTF_8.name());
         response.setCharacterEncoding(UTF_8.name());
         chain.doFilter(request, response);
-        System.out.println();
     }
 
     @Override
