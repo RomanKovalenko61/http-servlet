@@ -1,9 +1,8 @@
 package com.example.dto;
 
+import jakarta.servlet.http.Part;
 import lombok.Builder;
 import lombok.Value;
-
-import javax.servlet.http.Part;
 
 @Value
 @Builder
