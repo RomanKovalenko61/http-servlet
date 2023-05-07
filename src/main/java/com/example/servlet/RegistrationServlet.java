@@ -8,6 +8,7 @@ import com.example.service.UserService;
 import com.example.util.JspHelper;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+@MultipartConfig(fileSizeThreshold = 1024 * 1024)
 @WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
 
@@ -34,6 +36,7 @@ public class RegistrationServlet extends HttpServlet {
         req.setCharacterEncoding(StandardCharsets.UTF_8.name());
         var createUserDto = CreateUserDto.builder()
                 .name(req.getParameter("name"))
+                .image(req.getPart("image"))
                 .birthday(req.getParameter("birthdate"))
                 .email(req.getParameter("email"))
                 .password(req.getParameter("password"))
