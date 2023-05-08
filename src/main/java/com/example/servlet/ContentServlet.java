@@ -3,6 +3,7 @@ package com.example.servlet;
 import com.example.dto.FlightDTO;
 import com.example.service.FlightService;
 import com.example.util.JspHelper;
+import com.example.util.UrlPath;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,7 +15,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toMap;
 
-@WebServlet("/content")
+@WebServlet(UrlPath.CONTENT)
 public class ContentServlet extends HttpServlet {
 
     public static final FlightService flightService = FlightService.getInstance();

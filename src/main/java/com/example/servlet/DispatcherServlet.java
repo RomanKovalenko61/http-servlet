@@ -1,5 +1,6 @@
 package com.example.servlet;
 
+import com.example.util.UrlPath;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/dispatcher")
+@WebServlet(UrlPath.DISPATCHER)
 public class DispatcherServlet extends HttpServlet {
 
     @Override

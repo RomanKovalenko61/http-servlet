@@ -1,5 +1,6 @@
 package com.example.servlet;
 
+import com.example.util.UrlPath;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -11,7 +12,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@WebServlet("/cookies")
+@WebServlet(UrlPath.COOKIES)
 public class CookieServlet extends HttpServlet {
 
     public static final String UNIQUE_ID = "userId";

@@ -6,6 +6,7 @@ import com.example.entity.Role;
 import com.example.exception.ValidationException;
 import com.example.service.UserService;
 import com.example.util.JspHelper;
+import com.example.util.UrlPath;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024)
-@WebServlet(value = "/registration", name = "RegistrationServlet")
+@WebServlet(value = UrlPath.REGISTRATION, name = "RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
 
     private static final UserService userService = UserService.getInstance();

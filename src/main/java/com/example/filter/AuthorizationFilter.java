@@ -14,7 +14,7 @@ import static com.example.util.UrlPath.*;
 @WebFilter("/*")
 public class AuthorizationFilter implements Filter {
 
-    private static final Set<String> PUBLIC_PATH = Set.of(LOGIN, REGISTRATION, IMAGES);
+    private static final Set<String> PUBLIC_PATH = Set.of(LOGIN, REGISTRATION, IMAGES, LOCALE);
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -22,8 +22,7 @@ public class AuthorizationFilter implements Filter {
         if (isPublicPath(uri) || isUserLoggedIn(servletRequest)) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
-            var prevPage = ((HttpServletRequest) servletRequest).getHeader("referer");
-            ((HttpServletResponse) servletResponse).sendRedirect(prevPage != null ? prevPage : LOGIN);
+            reject(servletRequest, servletResponse);
         }
     }
 
@@ -34,5 +33,10 @@ public class AuthorizationFilter implements Filter {
 
     private boolean isPublicPath(String uri) {
         return PUBLIC_PATH.stream().anyMatch(uri::startsWith);
+    }
+
+    private void reject(ServletRequest servletRequest, ServletResponse servletResponse) throws IOException {
+        var prevPage = ((HttpServletRequest) servletRequest).getHeader("referer");
+        ((HttpServletResponse) servletResponse).sendRedirect(prevPage != null ? prevPage : LOGIN);
     }
 }
